@@ -27,7 +27,7 @@
             <input v-model="newComment.creator" type="text" class="form-control" id placeholder=" Name...">
             <textarea v-model="newComment.content" type="text-area" class="form-control" id
               placeholder="comment..."></textarea>
-            <button type="submit" class="btn btn-outline-dark btn-sm">Submit</button>
+            <button :disabled="goal.closed" type="submit" class="btn btn-outline-dark btn-sm">Submit</button>
           </div>
         </form>
       </div>
@@ -47,10 +47,12 @@
       if (!this.$store.state.activeGoal._id) {
         //go get goal by id
         this.$store.dispatch('getGoalbyId', this.id)
-      };
+      } else {
+        this.$store.dispatch('getAllComments')
+      }
 
-      this.$store.dispatch('setActive', this.id)
-      this.$store.dispatch('getAllComments');
+
+
       // let newId = this.$route.params.id
       // this.$store.dispatch(')
     },

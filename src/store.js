@@ -41,24 +41,36 @@ export default new Vuex.Store({
           commit('setGoals', res.data.results)
         })
     },
+    getAllGoalsSorted({ commit, dispatch }) {
+      _sandbox.get('')
+        .then(res => {
+          commit('setGoals', res.data.results.sort((a, b) => {
+            return a.closed - b.closed;
+          }))
+        })
+    },
     setActive({ commit, dispatch }, goal) {
       commit('setActiveGoal', goal)
     },
     getGoalbyId({ commit, dispatch }, goalId) {
       _sandbox.get(goalId)
         .then(res => {
+          console.log(res.data.results)
           commit('setActiveGoal', res.data.results)
+          dispatch('getAllComments')
         })
     },
     addComment({ commit, dispatch }, payload) {
       let goalId = this.state.activeGoal._id
+      console.log(this.state.activeGoal._id)
       _sandbox.post(`${goalId}/notes`, payload)
         .then(res => {
           dispatch('getAllComments')
         })
     },
     getAllComments({ commit, dispatch }) {
-      let goalId = this.state.activeGoal
+      console.log(this.state.activeGoal)
+      let goalId = this.state.activeGoal._id
       _sandbox.get(`${goalId}/notes`)
         .then(res => {
           commit('setComments', res.data.results)
@@ -68,6 +80,13 @@ export default new Vuex.Store({
       _sandbox.delete('' + payload)
         .then(res => {
           dispatch('getAllGoals')
+        })
+    },
+    removeComment({ commit, dispatch }, payload) {
+      console.log(payload)
+      _sandbox.delete('' + payload)
+        .then(res => {
+          dispatch('getAllComments')
         })
     }
   }

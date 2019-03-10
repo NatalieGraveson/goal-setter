@@ -13,6 +13,7 @@
             <textarea v-model="newGoal.description" type="text-area" class="form-control" id
               placeholder=" Description..."></textarea>
             <button type="submit" class="btn btn-outline-dark btn-sm">Submit</button>
+            <button @click="getAllGoalsSorted" type="button" class="btn btn-outline-dark btn-sm">Sort</button>
           </div>
         </form>
       </div>
@@ -46,6 +47,9 @@
     methods: {
       addGoal() {
         this.$store.dispatch('addGoal', this.newGoal)
+      },
+      getAllGoalsSorted() {
+        this.$store.dispatch('getAllGoalsSorted')
       }
     }
   }
