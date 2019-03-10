@@ -58,7 +58,7 @@ export default new Vuex.Store({
         })
     },
     getAllComments({ commit, dispatch }) {
-      let goalId = this.state.activeGoal._id
+      let goalId = this.state.activeGoal
       _sandbox.get(`${goalId}/notes`)
         .then(res => {
           commit('setComments', res.data.results)

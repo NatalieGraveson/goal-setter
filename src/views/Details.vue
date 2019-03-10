@@ -48,6 +48,8 @@
         //go get goal by id
         this.$store.dispatch('getGoalbyId', this.id)
       };
+
+      this.$store.dispatch('setActive', this.id)
       this.$store.dispatch('getAllComments');
       // let newId = this.$route.params.id
       // this.$store.dispatch(')

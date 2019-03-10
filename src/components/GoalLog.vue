@@ -17,7 +17,7 @@
                      @click="setActive(log); $router.push({name: 'logDetails', params: {id: log._id}})">
                      <td>{{log.title}}</td>
                      <td>{{log.creator}}</td>
-                     <td>{{log.closed ? 'Closed' : 'Active'}}<button v-if="!log.closed" class="bg-danger"
+                     <td>{{log.closed ? 'Closed' : 'Active'}}<button v-if="!log.closed" class="btn btn-outline-danger"
                            @click="changeIt(log._id)">close
                            task</button></td>
                      <td>{{log.createdAt}}</td>
@@ -46,6 +46,9 @@
       methods: {
          setActive(log) {
             this.$store.dispatch('setActive', log)
+         },
+         changeIt(log) {
+            this.$store.dispatch('changeIt', log)
          }
       },
       components: {
