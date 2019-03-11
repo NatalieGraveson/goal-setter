@@ -13,7 +13,7 @@
                   </tr>
                </thead>
                <tbody v-for="log in allLogs" :key="log.id">
-                  <tr :class="{'bg-dark': log.closed}"
+                  <tr :class="{'bg-dark text-white': log.closed}"
                      @click="setActive(log); $router.push({name: 'logDetails', params: {id: log._id}})">
                      <td>{{log.title}}</td>
                      <td>{{log.creator}}</td>

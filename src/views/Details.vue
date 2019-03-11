@@ -24,8 +24,8 @@
         </table>
         <form @submit.prevent="addComment" class="mb-4">
           <div class="form-group my-4 col-12 d-flex justify-content-center flex-column">
-            <input v-model="newComment.creator" type="text" class="form-control" id placeholder=" Name...">
-            <textarea v-model="newComment.content" type="text-area" class="form-control" id
+            <input required v-model="newComment.creator" type="text" class="form-control" id placeholder=" Name...">
+            <textarea required v-model="newComment.content" type="text-area" class="form-control" id
               placeholder="comment..."></textarea>
             <button :disabled="goal.closed" type="submit" class="btn btn-outline-dark btn-sm">Submit</button>
           </div>
@@ -51,12 +51,8 @@
         this.$store.dispatch('getAllComments')
       }
 
-
-
-      // let newId = this.$route.params.id
-      // this.$store.dispatch(')
     },
-    //GO GET COMMENTS FOR THIS GOAL ID
+
 
     data() {
       return {

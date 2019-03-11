@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import Axios from 'axios'
 
 const _sandbox = Axios.create({
-  baseURL: 'https://bcw-sandbox.herokuapp.com/api/natalie/bugs'
+  baseURL: 'https://bcw-sandbox.herokuapp.com/api/natalieG/bugs'
 })
 
 Vue.use(Vuex)
@@ -55,21 +55,18 @@ export default new Vuex.Store({
     getGoalbyId({ commit, dispatch }, goalId) {
       _sandbox.get(goalId)
         .then(res => {
-          console.log(res.data.results)
           commit('setActiveGoal', res.data.results)
           dispatch('getAllComments')
         })
     },
     addComment({ commit, dispatch }, payload) {
       let goalId = this.state.activeGoal._id
-      console.log(this.state.activeGoal._id)
       _sandbox.post(`${goalId}/notes`, payload)
         .then(res => {
           dispatch('getAllComments')
         })
     },
     getAllComments({ commit, dispatch }) {
-      console.log(this.state.activeGoal)
       let goalId = this.state.activeGoal._id
       _sandbox.get(`${goalId}/notes`)
         .then(res => {
@@ -83,7 +80,6 @@ export default new Vuex.Store({
         })
     },
     removeComment({ commit, dispatch }, payload) {
-      console.log(payload)
       _sandbox.delete('' + payload)
         .then(res => {
           dispatch('getAllComments')
