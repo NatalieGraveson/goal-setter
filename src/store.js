@@ -84,6 +84,13 @@ export default new Vuex.Store({
         .then(res => {
           dispatch('getAllComments')
         })
+    },
+    editBug({ commit, dispatch }, { commentId, status }) {
+      let goalId = this.state.activeGoal._id
+      _sandbox.put(`${goalId}/notes/${commentId}`, { "flagged": status })
+        .then(res => {
+          dispatch('getAllComments')
+        })
     }
   }
 })

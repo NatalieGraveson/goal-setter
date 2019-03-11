@@ -6,7 +6,19 @@
           <h2>{{comment.creator}}</h2>
           <p>{{comment.content}}</p>
           <h6>{{comment.createdAt}}</h6>
-          <button @click="removeComment(comment._id)" type="button" class="btn btn-outline-dark">Remove</button>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Status
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" @click="editBug(comment._id, 'completed')">Completed</a>
+              <a class="dropdown-item" @click="editBug(comment._id,'rejected')">Rejected</a>
+            </div>
+          </div>
+          <h5>Status:{{comment.flagged}}</h5>
+          <hr>
+          <button @click="removeComment(comment._id)" type="button" class="btn btn-outline-light">Remove</button>
         </div>
       </div>
     </div>
@@ -27,6 +39,9 @@
     methods: {
       removeComment(commentId) {
         this.$store.dispatch('removeComment', this.$store.state.activeGoal._id + '/notes/' + commentId)
+      },
+      editBug(commentId, status) {
+        this.$store.dispatch('editBug', { commentId, status })
       }
     },
     components: {}

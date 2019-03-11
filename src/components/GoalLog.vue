@@ -1,5 +1,5 @@
 <template>
-   <div class="GoalLog">
+   <div class="goallog">
       <div class="row">
          <div class="col-2"></div>
          <div class="col-8">
@@ -58,5 +58,7 @@
 </script>
 
 <style>
-
+   .goallog {
+      min-height: 47vh;
+   }
 </style>

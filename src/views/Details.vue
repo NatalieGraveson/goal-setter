@@ -9,6 +9,7 @@
             <tr>
               <th scope="col">Title</th>
               <th scope="col">Reported</th>
+              <th scope="col">Description</th>
               <th scope="col">Status</th>
               <th scope="col">Date</th>
             </tr>
@@ -17,6 +18,7 @@
             <tr>
               <td>{{goal.title}}</td>
               <td>{{goal.creator}}</td>
+              <td>{{goal.description}}</td>
               <td>{{goal.closed ? 'Closed' : 'Active'}}</td>
               <td>{{goal.createdAt}}</td>
             </tr>
@@ -34,6 +36,12 @@
       <div class="col-3"></div>
     </div>
     <myComment></myComment>
+    <footer class="footer mt-auto py-3">
+      <div class="container">
+        <img
+          src="https://moyo-production.s3.amazonaws.com/uploads/critical_reflections/26/images/112/extra_wide_Ocean.jpg">
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -79,3 +87,6 @@
     }
   }
 </script>
+<style>
+
+</style>

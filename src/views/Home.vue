@@ -24,8 +24,12 @@
       </div>
     </div>
     <GoalLog></GoalLog>
-    <img src="https://moyo-production.s3.amazonaws.com/uploads/critical_reflections/26/images/112/extra_wide_Ocean.jpg"
-      alt="">
+    <footer class="footer mt-auto py-3">
+      <div class="container">
+        <img
+          src="https://moyo-production.s3.amazonaws.com/uploads/critical_reflections/26/images/112/extra_wide_Ocean.jpg">
+      </div>
+    </footer>
   </div>
 </template>
 <script>
@@ -82,5 +86,7 @@
   img {
     width: 98vw;
     height: 217px;
+    border: 14px solid #ffffff47;
+    margin-left: -386px;
   }
 </style>
