@@ -88,5 +88,7 @@
   }
 </script>
 <style>
-
+  img {
+    margin-top: 43px;
+  }
 </style>
